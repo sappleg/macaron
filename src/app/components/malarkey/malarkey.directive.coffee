@@ -1,6 +1,5 @@
 angular.module 'macaron'
   .directive 'acmeMalarkey', ->
-
     MalarkeyController = ($log, githubContributor) ->
       'ngInject'
       vm = this

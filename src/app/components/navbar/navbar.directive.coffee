@@ -1,6 +1,5 @@
 angular.module 'macaron'
   .directive 'acmeNavbar', ->
-
     NavbarController = (moment) ->
       'ngInject'
       vm = this

@@ -3,8 +3,7 @@ angular.module 'macaron'
     'ngInject'
     apiHost = 'https://api.github.com/repos/Swiip/generator-gulp-angular'
 
-    getContributors = (limit=30) ->
-
+    getContributors = (limit = 30) ->
       getContributorsComplete = (response) ->
         response.data
 
