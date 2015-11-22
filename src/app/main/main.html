@@ -3,13 +3,5 @@
     <acme-navbar creation-date="main.creationDate"></acme-navbar>
   </div>
 
-  <form
-    class="dropzone"
-    method="post"
-    enctype="multipart/form-data"
-    dropzone="dropzone"
-    dropzone-config="main.dropzoneConfig"
-    ng-dropzone>
-    <input name="file" type="file" multiple />
-  </form>
+  <dropzone config="main.dropzoneConfig"></dropzone>
 </div>

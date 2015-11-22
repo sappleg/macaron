@@ -1,24 +1,37 @@
 angular.module 'macaron'
 .controller 'MainController', class MainController
 
-  constructor: (@$timeout, @toastr) ->
+  constructor: ->
     'ngInject'
 
     @dropzoneConfig =
-      parallelUploads: 3
-      maxFileSize: 30
+      options:
+        url: "http://facebook.com"
+        method: 'post'
+        maxFileSize: 50
+        # previewsContainer: false
+      eventHandlers:
+        accept: (file, done) ->
+          console.log 'accept'
+        sending: (file, xhr, formData) ->
+          console.log 'sending'
+        error: (file, message) ->
+          throw Error 'There was an error uploading your file: ' + message
+        success: (file) ->
+          console.log 'success'
 
-    @awesomeThings = []
-    @classAnimation = ''
-    @creationDate = 1447010814444
-    @activate()
+.directive 'dropzone', ->
+  restrict: 'E'
+  replace: true
+  scope:
+    config: '='
+  link: (scope, element) ->
+    dropzone = new Dropzone(element[0], angular.merge(
+      accept: scope.config.eventHandlers.accept
+    , scope.config.options))
 
-  activate: ->
-    @$timeout (=>
-      @classAnimation = 'rubberBand'
-    ), 4000
-
-  showToastr: =>
-    @toastr.info "Fork <a href=\"https://github.com/Swiip/generator-gulp-angular\"
-      target=\"_blank\"><b>generator-gulp-angular</b></a>"
-    @classAnimation = ''
+    angular.forEach scope.config.eventHandlers, (handler, event) ->
+      dropzone.on event, handler
+  template: '''
+    <form class="dropzone"></form>
+  '''
