@@ -50,6 +50,11 @@
     "uglify-save-license": "~0.4.1",
     "wrench": "~1.5.8"
   },
+  "dependencies": {
+    "coffee-script": "~1.9.3",
+    "compression": "~1.4.4",
+    "express": "~4.12.4"
+  },
   "engines": {
     "node": ">=0.10.0"
   }

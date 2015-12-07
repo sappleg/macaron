@@ -1,24 +1,26 @@
 angular.module 'macaron'
 .controller 'MainController', class MainController
 
-  constructor: ->
+  constructor: ($http) ->
     'ngInject'
 
     @dropzoneConfig =
       options:
-        url: "http://facebook.com"
-        method: 'post'
         maxFileSize: 50
-        # previewsContainer: false
+        method: 'post'
+        url: 'http://localhost:9000/documents'
       eventHandlers:
         accept: (file, done) ->
           console.log 'accept'
+          done()
         sending: (file, xhr, formData) ->
-          console.log 'sending'
+          console.log 'file: ', file
+          console.log 'xhr: ', xhr
+          console.log 'formData: ', formData
         error: (file, message) ->
           throw Error 'There was an error uploading your file: ' + message
         success: (file) ->
-          console.log 'success'
+          console.log 'success: ', file
 
 .directive 'dropzone', ->
   restrict: 'E'

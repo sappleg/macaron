@@ -1,1 +1,12 @@
-angular.module 'macaron', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ngResource', 'ngRoute', 'ui.bootstrap', 'toastr']
+angular.module 'macaron', [
+  'ngMockE2E'
+  'ngAnimate'
+  'ngCookies'
+  'ngTouch'
+  'ngSanitize'
+  'ngMessages'
+  'ngAria'
+  'ngResource'
+  'ngRoute'
+  'ui.bootstrap'
+]

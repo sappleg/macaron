@@ -1,4 +1,10 @@
 angular.module 'macaron'
-  .run ($log) ->
+  .run ($log, $httpBackend) ->
     'ngInject'
-    $log.debug 'runBlock end'
+
+    $httpBackend.whenPOST('/document.png').respond (method, url, data) ->
+      params = angular.fromJson(data)
+      console.log params
+      [201, {}, {}]
+
+    $httpBackend.whenGET(/.*/).passThrough()
